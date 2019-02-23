@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Location API' do
   it "sends the city and state" do
-    location_data = create(:location)
+  location_data = create(:location)
 
   get "/api/v1/forecast?location=#{location_data}"
 
