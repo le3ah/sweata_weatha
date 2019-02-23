@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe 'Location API' do
   it "sends the city and state" do
-  location_data = create(:location)
+  location = create(:location)
 
-  get "/api/v1/forecast?location=#{location_data["city"]},#{location_data["state"]}"
+  get "/api/v1/forecast?location=#{location["city"]},#{location["state"]}"
 
-  location = JSON.parse(response.body)
+  locations = JSON.parse(response.body)
 
-  expect(repsonse).to be_successful
-  expect(location["city"]).to eq(location["city"])
-  expect(location["state"]).to eq(location["state"])
+  expect(response).to be_successful
+  expect(locations[0]["city"]).to eq(location["city"])
+  expect(locations[0]["state"]).to eq(location["state"])
   end
 end
