@@ -24,6 +24,8 @@ coverage
 /public/assets
 .byebug_history
 
+/spec/cassettes
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
