@@ -31,7 +31,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-SimpleCov.start "rails"
+require 'simplecov'
+SimpleCov.start
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
