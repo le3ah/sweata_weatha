@@ -3,13 +3,17 @@ class GeocodingService
     @location = location
   end
 
+  def find_coordinates
+    get_json("/maps/api/geocode/json")
+  end
+
   def find_latitude
-    get_json("/maps/api/geocode/json")[:results]
+    find_coordinates[:results]
     .first[:geometry][:location][:lat]
   end
 
   def find_longitude
-    get_json("/maps/api/geocode/json")[:results]
+    find_coordinates[:results]
     .first[:geometry][:location][:lng]
   end
 
