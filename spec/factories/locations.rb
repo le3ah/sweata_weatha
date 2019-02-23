@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :location do
-    city { "Cullman" }
-    state { "AL" }
+    city { "Denver" }
+    state { "CO" }
   end
 end
