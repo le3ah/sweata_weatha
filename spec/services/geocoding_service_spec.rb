@@ -1,12 +1,12 @@
 describe GeocodingService do
-  it "exists" do
+  it "exists", :vcr do
     location = create(:location)
 
     geocoding_service = GeocodingService.new(location)
     expect(geocoding_service).to be_a(GeocodingService)
   end
 
-  it 'returns the latitude and logitude of a city and state' do
+  it 'returns the latitude and logitude of a city and state', :vcr do
     location = create(:location)
 
     latitude = '39.7392358'

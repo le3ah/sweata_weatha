@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe DarkSkyService do
-  it "can get weather" do
+  it "can get weather", :vcr do
     location = create(:location)
     geocoding_service = GeocodingService.new(location)
     latitude = geocoding_service.find_latitude
@@ -31,6 +31,7 @@ describe DarkSkyService do
     expect(result[:daily][:data].first).to have_key(:precipType)
     expect(result[:daily][:data].first).to have_key(:temperatureHigh)
     expect(result[:daily][:data].first).to have_key(:temperatureLow)
+    expect(result[:daily][:data].last).to have_key(:summary)
 
     expect(result).to have_key(:hourly)
     expect(result[:hourly][:data].first).to have_key(:icon)
