@@ -4,7 +4,7 @@ describe 'Location API' do
   it "sends the city and state" do
   location_data = create(:location)
 
-  get "/api/v1/forecast?location=#{location_data}"
+  get "/api/v1/forecast?location=#{location_data["city"]},#{location_data["state"]}"
 
   location = JSON.parse(response.body)
 
