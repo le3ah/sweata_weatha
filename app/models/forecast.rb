@@ -7,8 +7,8 @@ class Forecast
     @latitude = get_latitude
     @longitude = get_longitude
     @currently = current_weather
-    @hourly = hourly_weather
-    @daily = daily_weather
+    @hourly = hourly_weather[0..7]
+    @daily = daily_weather[0..4]
     @tonight_summary = get_tonight_summary
   end
 
@@ -48,6 +48,6 @@ class Forecast
   end
 
   def get_tonight_summary
-    weather_data[:daily][:data].last[:summary]
+    weather_data[:hourly][:data].last[:summary]
   end
 end
