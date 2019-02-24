@@ -6,6 +6,7 @@ class Forecast
     @state = city_state[1].upcase
     @latitude = get_latitude
     @longitude = get_longitude
+    @currently = current_weather
   end
 
   def get_latitude
@@ -17,13 +18,13 @@ class Forecast
   end
 
   def location_data
-    GeocodingService.new(@city, @state)
+    @_location_data ||= GeocodingService.new(@city, @state)
   end
 
   def weather_data
-    DarkSkyService.new.get_weather(@latitude, @longitude)
+    @_weather_data ||= DarkSkyService.new.get_weather(@latitude, @longitude)
   end
-  
+
   def current_weather
     weather_data[:currently]
   end
