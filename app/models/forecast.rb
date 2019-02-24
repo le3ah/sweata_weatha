@@ -7,6 +7,8 @@ class Forecast
     @latitude = get_latitude
     @longitude = get_longitude
     @currently = current_weather
+    @hourly = hourly_weather
+    @daily = daily_weather
   end
 
   def get_latitude
@@ -31,11 +33,16 @@ class Forecast
   end
 
   def daily_weather
-    results = weather_data[:daily]
-    DailyWeather.new(results)
+    results = weather_data[:daily][:data]
+    results.map do |raw_day|
+      DailyWeather.new(raw_day)
+    end
   end
 
   def hourly_weather
-    weather_data[:hourly]
+    results = weather_data[:hourly][:data]
+    results.map do |raw_hour|
+      HourlyWeather.new(raw_hour)
+    end
   end
 end
