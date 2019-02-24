@@ -1,5 +1,4 @@
 class GeocodingService
-  attr_reader :city, :state
   def initialize(city, state)
     @city = city
     @state = state
