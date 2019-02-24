@@ -26,7 +26,8 @@ class Forecast
   end
 
   def current_weather
-    weather_data[:currently]
+    results = weather_data[:currently]
+    CurrentWeather.new(results)
   end
 
   def daily_weather
