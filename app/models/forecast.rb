@@ -9,22 +9,30 @@ class Forecast
   end
 
   def get_latitude
-    GeocodingService.new(@city, @state).find_latitude
+    location_data.find_latitude
   end
 
   def get_longitude
-    GeocodingService.new(@city, @state).find_longitude
+    location_data.find_longitude
   end
 
+  def location_data
+    GeocodingService.new(@city, @state)
+  end
+
+  def weather_data
+    DarkSkyService.new.get_weather(@latitude, @longitude)
+  end
+  
   def current_weather
-    DarkSkyService.new.get_weather(@latitude, @longitude)[:currently]
+    weather_data[:currently]
   end
 
   def daily_weather
-    DarkSkyService.new.get_weather(@latitude, @longitude)[:daily]
+    weather_data[:daily]
   end
 
   def hourly_weather
-    DarkSkyService.new.get_weather(@latitude, @longitude)[:hourly]
+    weather_data[:hourly]
   end
 end
