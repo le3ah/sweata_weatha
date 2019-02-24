@@ -26,14 +26,17 @@ describe 'Forecast API' do
     forecasts = JSON.parse(response.body, symbolize_names: true)
 
     expect(forecasts[:data][:attributes]).to have_key(:currently)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:humidity)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:uvIndex)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:visibility)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:apparentTemperature)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:summary)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:icon)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:temperature)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:time)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:summary)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:temperature_high)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:temperature_low)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:current_temperature)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:current_time)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:date)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:feels_like)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:humidity)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:visability)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:uv_index)
   end
   it "returns the weather daily", :vcr do
     location = create(:location)
@@ -42,12 +45,11 @@ describe 'Forecast API' do
     forecasts = JSON.parse(response.body, symbolize_names: true)
 
     expect(forecasts[:data][:attributes]).to have_key(:daily)
-    expect(forecasts[:data][:attributes][:daily]).to have_key(:summary)
-    expect(forecasts[:data][:attributes][:daily][:data][0]).to have_key(:precipProbability)
-    expect(forecasts[:data][:attributes][:daily][:data][0]).to have_key(:precipType)
-    expect(forecasts[:data][:attributes][:daily][:data][0]).to have_key(:temperatureHigh)
-    expect(forecasts[:data][:attributes][:daily][:data][0]).to have_key(:temperatureLow)
-    expect(forecasts[:data][:attributes][:daily][:data][0]).to have_key(:summary)
+    expect(forecasts[:data][:attributes][:daily][0]).to have_key(:today_summary)
+    expect(forecasts[:data][:attributes][:daily][0]).to have_key(:precip_probability)
+    expect(forecasts[:data][:attributes][:daily][0]).to have_key(:precip_type)
+    expect(forecasts[:data][:attributes][:daily][0]).to have_key(:temperature_high)
+    expect(forecasts[:data][:attributes][:daily][0]).to have_key(:temperature_low)
   end
   it "returns the weather hourly", :vcr do
     location = create(:location)
@@ -56,8 +58,9 @@ describe 'Forecast API' do
     forecasts = JSON.parse(response.body, symbolize_names: true)
 
     expect(forecasts[:data][:attributes]).to have_key(:hourly)
-    expect(forecasts[:data][:attributes][:hourly]).to have_key(:icon)
-    expect(forecasts[:data][:attributes][:hourly][:data][0]).to have_key(:temperature)
-    expect(forecasts[:data][:attributes][:hourly][:data][0]).to have_key(:time)
+    # expect(forecasts[:data][:attributes][:hourly][:data].last).to have_key(:tonight_summary)
+    expect(forecasts[:data][:attributes][:hourly][0]).to have_key(:hourly_time)
+    expect(forecasts[:data][:attributes][:hourly][0]).to have_key(:hourly_temperature)
+    expect(forecasts[:data][:attributes][:hourly][0]).to have_key(:hourly_icon)
   end
 end
