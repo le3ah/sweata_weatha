@@ -31,7 +31,8 @@ class Forecast
   end
 
   def daily_weather
-    weather_data[:daily]
+    results = weather_data[:daily]
+    DailyWeather.new(results)
   end
 
   def hourly_weather
