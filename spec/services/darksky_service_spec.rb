@@ -3,11 +3,12 @@ require 'rails_helper'
 describe DarkSkyService do
   it "can get weather", :vcr do
     location = create(:location)
-    geocoding_service = GeocodingService.new(location)
+    geocoding_service = GeocodingService.new(location[:city], location[:state])
     latitude = geocoding_service.find_latitude
     longitude = geocoding_service.find_longitude
 
     darksky_service = DarkSkyService.new
+    expect(darksky_service).to be_a(DarkSkyService)
 
     result = darksky_service.get_weather(latitude, longitude)
 

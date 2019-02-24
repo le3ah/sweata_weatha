@@ -1,6 +1,7 @@
 class GeocodingService
-  def initialize(location)
-    @location = location
+  def initialize(city, state)
+    @city = city
+    @state = state
   end
 
   def find_coordinates
@@ -21,7 +22,7 @@ class GeocodingService
 
   def get_json(url)
     response = conn.get(url) do |f|
-      f.params[:address] = "#{@location.city},#{@location.state}"
+      f.params[:address] = "#{@city},#{@state}"
     end
     JSON.parse(response.body, symbolize_names: true)
   end

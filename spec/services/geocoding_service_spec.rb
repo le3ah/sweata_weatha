@@ -2,7 +2,7 @@ describe GeocodingService do
   it "exists", :vcr do
     location = create(:location)
 
-    geocoding_service = GeocodingService.new(location)
+    geocoding_service = GeocodingService.new(location[:city], location[:state])
     expect(geocoding_service).to be_a(GeocodingService)
   end
 
@@ -11,7 +11,7 @@ describe GeocodingService do
 
     latitude = '39.7392358'
     longitude = '-104.990251'
-    geocoding_service = GeocodingService.new(location)
+    geocoding_service = GeocodingService.new(location[:city], location[:state])
 
     lat_coordinate = geocoding_service.find_latitude
     lng_coordinate = geocoding_service.find_longitude
