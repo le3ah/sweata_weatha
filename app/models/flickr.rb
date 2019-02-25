@@ -6,5 +6,10 @@ class Flickr
     @id = attributes[:id]
     @secret = attributes[:secret]
     @title = attributes[:title]
+    @background_url = background_url
+  end
+
+  def background_url
+    "https://farm#{@farm_id}.staticflickr.com/#{@server_id}/#{@id}_#{@secret}.jpg"
   end
 end
