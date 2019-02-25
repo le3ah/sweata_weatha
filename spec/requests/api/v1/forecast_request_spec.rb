@@ -6,17 +6,14 @@ describe 'Forecast API' do
 
     get "/api/v1/forecast?location=#{location["city"]},#{location["state"]}"
 
-    forecasts = JSON.parse(response.body)
+    forecasts = JSON.parse(response.body, symbolize_names: true)
 
     latitude = '39.7392358'
     longitude = '-104.990251'
 
     expect(response).to be_successful
-
-    expect(forecasts["data"]["attributes"]["city"]).to eq(location["city"])
-    expect(forecasts["data"]["attributes"]["state"]).to eq(location["state"])
-    expect(forecasts["data"]["attributes"]["latitude"]).to eq(latitude.to_f)
-    expect(forecasts["data"]["attributes"]["longitude"]).to eq(longitude.to_f)
+    expect(forecasts[:data][:attributes][:latitude]).to eq(latitude.to_f)
+    expect(forecasts[:data][:attributes][:longitude]).to eq(longitude.to_f)
   end
 
   it "returns the weather currently", :vcr do
@@ -45,7 +42,6 @@ describe 'Forecast API' do
     forecasts = JSON.parse(response.body, symbolize_names: true)
 
     expect(forecasts[:data][:attributes]).to have_key(:daily)
-    expect(forecasts[:data][:attributes][:daily][0]).to have_key(:today_summary)
     expect(forecasts[:data][:attributes][:daily][0]).to have_key(:precip_probability)
     expect(forecasts[:data][:attributes][:daily][0]).to have_key(:precip_type)
     expect(forecasts[:data][:attributes][:daily][0]).to have_key(:temperature_high)
