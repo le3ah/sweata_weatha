@@ -4,7 +4,7 @@
 #   end
 #
 #   def location_data
-#     GeocodingService.new(@city, @state)
+#     GeocodingService.new
 #   end
 #
 #   def weather_data
