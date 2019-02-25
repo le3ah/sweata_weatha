@@ -58,7 +58,6 @@ describe 'Forecast API' do
     forecasts = JSON.parse(response.body, symbolize_names: true)
 
     expect(forecasts[:data][:attributes]).to have_key(:hourly)
-    # expect(forecasts[:data][:attributes][:hourly][:data].last).to have_key(:tonight_summary)
     expect(forecasts[:data][:attributes][:hourly][0]).to have_key(:hourly_time)
     expect(forecasts[:data][:attributes][:hourly][0]).to have_key(:hourly_temperature)
     expect(forecasts[:data][:attributes][:hourly][0]).to have_key(:hourly_icon)
