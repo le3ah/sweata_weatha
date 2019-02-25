@@ -1,5 +1,15 @@
 class CurrentWeather
-  attr_reader :summary
+  attr_reader :summary,
+              :icon,
+              :temperature_high,
+              :temperature_low,
+              :current_temperature,
+              :current_time,
+              :date,
+              :feels_like,
+              :humidity,
+              :visability,
+              :uv_index
   def initialize(attributes)
     @icon = attributes[:icon]
     @summary = attributes[:summary]
