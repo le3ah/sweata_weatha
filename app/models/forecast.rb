@@ -1,5 +1,12 @@
 class Forecast
-  attr_reader :city, :state, :latitude, :longitude
+  attr_reader :city,
+              :state,
+              :latitude,
+              :longitude,
+              :currently,
+              :hourly,
+              :daily,
+              :tonight_summary
   def initialize(location)
     city_state = location.split(',')
     @city = city_state[0].capitalize
