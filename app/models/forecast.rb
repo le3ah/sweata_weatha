@@ -9,8 +9,8 @@ class Forecast
     @latitude = attributes[:latitude]
     @longitude = attributes[:longitude]
     @currently = attributes[:currently]
-    @hourly = attributes[:hourly][:data]
-    @daily = attributes[:daily][:data]
+    @hourly = attributes[:hourly]
+    @daily = attributes[:daily]
   end
 
   def current_weather
@@ -18,13 +18,13 @@ class Forecast
   end
 
   def daily_weather
-    @daily.map do |raw_day|
+    @daily[:data].map do |raw_day|
       DailyWeather.new(raw_day)
     end
   end
 
   def hourly_weather
-    @hourly.map do |raw_hour|
+    @hourly[:data].map do |raw_hour|
       HourlyWeather.new(raw_hour)
     end
   end
