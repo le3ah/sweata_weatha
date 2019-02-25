@@ -1,4 +1,9 @@
 class DailyWeather
+  attr_reader :today_summary,
+              :precip_probability,
+              :precip_type,
+              :temperature_high,
+              :temperature_low
   def initialize(attributes)
     @today_summary = attributes[:summary]
     @precip_probability = attributes[:precipProbability]

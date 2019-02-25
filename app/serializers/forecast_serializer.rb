@@ -1,7 +1,7 @@
 class ForecastSerializer
   include FastJsonapi::ObjectSerializer
   set_id :object_id
-  attributes :latitude, :longitude, :city, :state
+  attributes :latitude, :longitude
 
   attribute :currently do |object|
     object.current_weather
