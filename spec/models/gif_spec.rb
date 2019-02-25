@@ -12,7 +12,6 @@ describe Gif do
                     } ]
                   } }
     gif = Gif.new(attributes)
-    binding.pry
     expect(gif).to be_a(Gif)
   end
 end
