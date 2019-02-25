@@ -20,15 +20,15 @@ class Forecast
   end
 
   def get_latitude
-    location_data.find_latitude
+    location_data[:lat]
   end
 
   def get_longitude
-    location_data.find_longitude
+    location_data[:lng]
   end
 
   def location_data
-    @_location_data ||= GeocodingService.new(@city, @state)
+    @_location_data ||= GeocodingService.new.find_coordinates(@city, @state)
   end
 
   def weather_data
