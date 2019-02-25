@@ -25,14 +25,12 @@ describe 'Forecast API' do
     expect(forecasts[:data][:attributes]).to have_key(:currently)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:icon)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:summary)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:temperature_high)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:temperature_low)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:current_temperature)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:current_time)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:date)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:feels_like)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:humidity)
-    expect(forecasts[:data][:attributes][:currently]).to have_key(:visability)
+    expect(forecasts[:data][:attributes][:currently]).to have_key(:visibility)
     expect(forecasts[:data][:attributes][:currently]).to have_key(:uv_index)
   end
   it "returns the weather daily", :vcr do

@@ -19,7 +19,7 @@ describe Forecast do
                 "date": "2/24",
                 "feels_like": 30.63,
                 "humidity": 0.43,
-                "visability": 10,
+                "visibility": 10,
                 "uv_index": 0
             },
             "daily": [
