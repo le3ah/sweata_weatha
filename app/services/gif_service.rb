@@ -4,7 +4,6 @@ class GifService
     response = conn.get("/v1/gifs/search?") do |f|
       f.params[:q] = keyword
     end
-    binding.pry
     JSON.parse(response.body, symbolize_names: true)[:data]
   end
 

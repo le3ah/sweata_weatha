@@ -29,10 +29,15 @@ class GifFacade
     end
   end
 
+  def gif_precip_type
+    get_keyword.map do |daily_weather|
+      daily_weather.precip_type
+    end
+  end
+
   def gif_data
-    get_keyword.each do |daily_weather|
-      GifService.new.find_gifs(daily_weather.precip_type)
-      binding.pry
+    gif_precip_type.map do |type|
+      GifService.new.find_gifs(type)
     end
   end
 
