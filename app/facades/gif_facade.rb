@@ -37,12 +37,13 @@ class GifFacade
 
   def gif_data
     gif_precip_type.map do |type|
+      binding.pry
       GifService.new.find_gifs(type)
     end
   end
 
   def get_gif_url
-    # binding.pry
+    binding.pry
     results = gif_data[:images][:fixed_width][:url]
   end
 end

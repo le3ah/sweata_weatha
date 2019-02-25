@@ -16,6 +16,8 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.filter_sensitive_data('<darksky>') { ENV['darksky_api_secret']}
   config.filter_sensitive_data('<geocoding>') { ENV['google_maps_api_key']}
+  config.filter_sensitive_data('<flickr>') { ENV['flickr_api_key']}
+  config.filter_sensitive_data('<gif>') { ENV['GIPHY_API_KEY']}
 end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
