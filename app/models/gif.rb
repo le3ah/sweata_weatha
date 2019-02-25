@@ -1,5 +1,5 @@
 class Gif
   def initialize(attributes)
-    binding.pry
+    # binding.pry
   end
 end
