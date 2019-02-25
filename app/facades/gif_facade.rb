@@ -5,10 +5,6 @@ class GifFacade
     @state = city_state[1].upcase
   end
 
-  def get_keyword
-    forecast_data
-  end
-
   def get_latitude
     location_data[:lat]
   end
@@ -28,10 +24,17 @@ class GifFacade
   end
 
   def gif_data
-    keyword = get_keyword
-    @_gif_data ||= GifService.new.find_gifs(keyword)
+    get_keyword.map do |word|
+      GifService.new.find_gifs(word)
+    end
   end
 
+  def get_keyword
+    forecast_data[:daily][:data].map do |raw_day|
+      Gif.new(raw_day)
+    end
+  end
+  
   def get_gif_url
     results = gif_data
     Gif.new(results)

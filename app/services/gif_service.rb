@@ -7,6 +7,8 @@ class GifService
     JSON.parse(response.body, symbolize_names: true)[:data]
   end
 
+  private
+
   def conn
     Faraday.new('https://api.giphy.com') do |f|
       f.params[:key] = ENV['GIPHY_API_KEY']
