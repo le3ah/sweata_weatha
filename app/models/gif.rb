@@ -4,10 +4,6 @@ class Gif
     # binding.pry
     @time = attributes[:time]
     @summary = attributes[:summary]
-    @url = gif_url
-  end
-
-  def gif_url
-
+    @url = attributes[:images][:fixed_width][:url]
   end
 end

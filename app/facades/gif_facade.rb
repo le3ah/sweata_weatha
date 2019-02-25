@@ -32,11 +32,12 @@ class GifFacade
   def gif_data
     get_keyword.each do |daily_weather|
       GifService.new.find_gifs(daily_weather.precip_type)
+      binding.pry
     end
   end
 
   def get_gif_url
-    results = gif_data
-    binding.pry
+    # binding.pry
+    results = gif_data[:images][:fixed_width][:url]
   end
 end
