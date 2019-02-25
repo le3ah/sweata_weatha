@@ -20,28 +20,21 @@ class GifFacade
   def forecast_data
     lat = get_latitude
     long = get_longitude
-    @_forecast_data ||= DarkSkyService.new.get_weather(lat, long)
+    @_forecast_data ||= DarkSkyService.new.get_weather(lat, long)[:daily][:data]
   end
 
-  def get_keyword
-    forecast_data[:daily][:data].map do |raw_day|
+  def get_daily_weather
+    forecast_data.map do |raw_day|
       DailyWeather.new(raw_day)
     end
   end
 
-  def gif_precip_type
-    get_keyword.map do |daily_weather|
-      daily_weather.precip_type
+  def gif_daily_data
+    get_daily_weather.map do |daily_weather|
+      url = GifService.find_gifs(daily_weather.precip_type)[0][:url]
+      time = daily_weather.time
+      summary = daily_weather.today_summary
+      Gif.new(url,time,summary)
     end
-  end
-
-  def gif_data
-    gif_precip_type.map do |type|
-      GifService.new.find_gifs(type)
-    end
-  end
-
-  def get_gif_url
-    results = gif_data[:images][:fixed_width][:url]
   end
 end

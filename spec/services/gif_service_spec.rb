@@ -6,7 +6,7 @@ describe GifService do
 
   it "returns the image url based on a keyword", :vcr do
     keyword = "sunny"
-    gif_service = GifService.new.find_gifs(keyword)
+    gif_service = GifService.find_gifs(keyword)
 
     expect(gif_service)
   end

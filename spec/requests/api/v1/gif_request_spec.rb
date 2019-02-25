@@ -9,9 +9,10 @@ describe 'Gif API' do
     gifs = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(gifs[:data]).to have_key(:images)
-    expect(gifs[:data][:images][0]).to have_key(:time)
-    expect(gifs[:data][:images][0]).to have_key(:summary)
-    expect(gifs[:data][:images][0]).to have_key(:url)
+    
+    expect(gifs[:data][0]).to have_key(:attributes)
+    expect(gifs[:data][0][:attributes]).to have_key(:time)
+    expect(gifs[:data][0][:attributes]).to have_key(:summary)
+    expect(gifs[:data][0][:attributes]).to have_key(:url)
   end
 end
