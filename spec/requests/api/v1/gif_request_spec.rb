@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Gif API' do
-  it "provides animated gif based on the Dark Sky API" do
+  it "provides animated gif based on the Dark Sky API", :vcr do
     location = create(:location)
 
     get "/api/v1/gifs?location=#{location["city"]},#{location["state"]}"
