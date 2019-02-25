@@ -1,5 +1,7 @@
 class Api::V1::GifsController < ApplicationController
   def index
-    render json: Gif.new(params[:location])
+    gif = GifFacade.new(params[:location])
+    render json: GifSerializer.new(gif.get_gif_url)
+    # render json: Gif.all
   end
 end
