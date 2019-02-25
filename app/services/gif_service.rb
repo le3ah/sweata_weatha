@@ -1,0 +1,3 @@
+class GifService
+  
+end
