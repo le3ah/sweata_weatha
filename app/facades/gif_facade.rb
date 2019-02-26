@@ -5,21 +5,13 @@ class GifFacade
     @state = city_state[1].upcase
   end
 
-  def get_latitude
-    location_data[:lat]
-  end
-
-  def get_longitude
-    location_data[:lng]
-  end
-
   def location_data
     @_location_data ||= GeocodingService.new.find_coordinates(@city, @state)
   end
 
   def forecast_data
-    lat = get_latitude
-    long = get_longitude
+    lat = location_data[:lat]
+    long = location_data[:lng]
     @_forecast_data ||= DarkSkyService.new.get_weather(lat, long)[:daily][:data]
   end
 
