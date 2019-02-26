@@ -1,14 +1,14 @@
 class Api::V1::UsersController < ApplicationController
   def create
     if password_match
-      @user = User.new(user_params)
+      @user = User.create(user_params)
       if @user.save
         @user.api_key = SecureRandom.hex(10)
         @user.save
         render json: UserSerializer.new(@user)
       else
         render json: "Something went wrong"
-      end 
+      end
     else
       render json: "Incorrect password"
     end
@@ -20,6 +20,6 @@ class Api::V1::UsersController < ApplicationController
     params[:password] == params[:password_confirmation]
   end
   def user_params
-    params.permit(:email, :password, :password_confirmation)
+    params.permit(:email, :password)
   end
 end
