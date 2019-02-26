@@ -12,7 +12,7 @@ class Api::V1::FavoritesController < ApplicationController
     if params[:api_key]
       user = User.find_by(api_key: params[:api_key])
       if user && user.favorites
-        render json: user.favorites
+        render json: FavoriteSerializer.new(user)
       else
         render json: "You have no favorite locations", status: :unauthorized
       end
