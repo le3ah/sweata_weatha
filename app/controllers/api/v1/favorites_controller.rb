@@ -11,10 +11,10 @@ class Api::V1::FavoritesController < ApplicationController
   def index
     if params[:api_key]
       user = User.find_by(api_key: params[:api_key])
-      if user.favorites
+      if user && user.favorites
         render json: user.favorites
       else
-        render json: "You have no favorite locations"
+        render json: "You have no favorite locations", status: :unauthorized
       end
     else
       render json: "You're not welcome here", status: :unauthorized
