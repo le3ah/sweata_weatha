@@ -13,4 +13,12 @@ describe 'Users API' do
     expect(result).to have_key(:attributes)
     expect(result[:attributes]).to have_key(:api_key)
   end
+
+  it "sends an email and password", :vcr do
+    email = "mom@gmail.com"
+    password = "123"
+    password_confirmation = "321"
+    post "/api/v1/users?email=#{email}&password=#{password}&password_confirmation=#{password_confirmation}"
+    expect(response.body).to eq("Incorrect password")
+  end
 end
