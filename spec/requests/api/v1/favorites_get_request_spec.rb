@@ -24,10 +24,14 @@ describe 'Favorites API' do
     expect(response).to be_successful
 
     favorites = JSON.parse(response.body, symbolize_names: true)
-
-    expect(favorites[0][:location]).to eq("#{location_1[:city]},#{location_1[:state]}")
-    expect(favorites[1][:location]).to eq("#{location_2[:city]},#{location_2[:state]}")
+    expect(favorites[:data][:attributes][:favorites][0][:location]).to eq("#{location_1[:city]},#{location_1[:state]}")
+    expect(favorites[:data][:attributes][:favorites][0][:current_weather]).to have_key(:temperature)
+    expect(favorites[:data][:attributes][:favorites][0][:current_weather]).to have_key(:summary)
+    expect(favorites[:data][:attributes][:favorites][1][:location]).to eq("#{location_2[:city]},#{location_2[:state]}")
+    expect(favorites[:data][:attributes][:favorites][1][:current_weather]).to have_key(:temperature)
+    expect(favorites[:data][:attributes][:favorites][1][:current_weather]).to have_key(:summary)
   end
+
   it "does not retrieve favorites if bad api key", :vcr do
     email = "mom@gmail.com"
     password = "123"
