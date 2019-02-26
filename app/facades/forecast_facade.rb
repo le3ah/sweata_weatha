@@ -1,13 +1,15 @@
 class ForecastFacade
   def initialize(location)
-    city_state = location.split(',')
-    @city = city_state[0].capitalize
-    @state = city_state[1].upcase
+    @location = location
   end
 
   def get_forecast
     results = weather_data
     Forecast.new(results)
+  end
+
+  def split_location
+    @location.split(',')
   end
   def get_latitude
     location_data[:lat]
@@ -18,7 +20,7 @@ class ForecastFacade
   end
 
   def location_data
-    @_location_data ||= GeocodingService.new.find_coordinates(@city, @state)
+    @_location_data ||= GeocodingService.new.find_coordinates(split_location[0], split_location[1])
   end
 
   def weather_data

@@ -21,7 +21,6 @@ describe 'Sessions API' do
   it "returns error  when email & password are incorrect" do
     User.create(email: "mom@gmail.com", password: "password", password_confirmation: "password")
     email = "mom@gmail.com"
-    password = "password"
 
     post "/api/v1/sessions?email=#{email}&password=123"
 
