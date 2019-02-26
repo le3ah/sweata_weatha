@@ -7,4 +7,17 @@ class Api::V1::FavoritesController < ApplicationController
       render json: "You're not welcome here", status: :unauthorized
     end
   end
+
+  def index
+    if params[:api_key]
+      user = User.find_by(api_key: params[:api_key])
+      if user.favorites
+        render json: user.favorites
+      else
+        render json: "You have no favorite locations"
+      end
+    else
+      render json: "You're not welcome here", status: :unauthorized
+    end
+  end
 end
