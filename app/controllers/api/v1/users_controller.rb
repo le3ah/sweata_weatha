@@ -6,8 +6,6 @@ class Api::V1::UsersController < ApplicationController
         @user.api_key = SecureRandom.hex(10)
         @user.save
         render json: UserSerializer.new(@user)
-      else
-        render json: "Something went wrong"
       end
     else
       render json: "Incorrect password"
