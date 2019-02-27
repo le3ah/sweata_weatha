@@ -6,6 +6,7 @@ class DailyWeather
               :temperature_low,
               :time
   def initialize(attributes)
+    # binding.pry
     @today_summary = attributes[:summary]
     @precip_probability = attributes[:precipProbability]
     @precip_type = attributes[:precipType]
