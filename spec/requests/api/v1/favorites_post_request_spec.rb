@@ -32,5 +32,6 @@ describe  'Favorites API' do
 
     expect(response).to_not be_successful
     expect(response.status).to eq(401)
+    expect(response.body).to eq("You're not welcome here")
   end
 end
