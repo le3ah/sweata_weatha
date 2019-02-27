@@ -11,7 +11,6 @@ describe DarkSkyService do
     expect(darksky_service).to be_a(DarkSkyService)
 
     result = darksky_service.get_weather(latitude, longitude)
-
     expect(result[:latitude]).to eq(latitude.to_f)
     expect(result[:longitude]).to eq(longitude.to_f)
     expect(result).to have_key(:currently)
