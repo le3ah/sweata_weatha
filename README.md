@@ -13,7 +13,7 @@ Sweater Weather focuses on API creation and consumption, consuming the APIs from
 
 ## Getting Started
 
-To run Thirsty Plants on your local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
+To run Sweata Weatha on your local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
 
 ```
 $ git clone git@github.com:le3ah/sweata_weatha.git
