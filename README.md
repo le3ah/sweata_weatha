@@ -16,8 +16,8 @@ Sweater Weather focuses on API creation and consumption, consuming the APIs from
 To run Thirsty Plants on your local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
 
 ```
-$ git clone git@github.com:le3ah/thirsty_plants.git
-$ cd thirsty_plants
+$ git clone git@github.com:le3ah/sweata_weatha.git
+$ cd sweata_weatha
 $ bundle
 $ rails g rspec:install
 $ rails db:create
