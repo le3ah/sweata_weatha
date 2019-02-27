@@ -26,7 +26,7 @@ $ bundle exec figaro install
 ```
 #### Setup your environment variables:
 
-##### Sign Up on the following API's:
+##### Sign Up on the following APIs:
 * [Dark Sky](https://darksky.net/dev)
 * [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
 * [Flickr](https://www.flickr.com/services/api/)
