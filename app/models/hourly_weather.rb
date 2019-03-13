@@ -3,7 +3,7 @@ class HourlyWeather
               :hourly_temperature, 
               :hourly_icon
   def initialize(attributes)
-    @hourly_time = Time.at(attributes[:time]).strftime("%l")
+    @hourly_time = Time.at(attributes[:time]).strftime("%l %P")
     @hourly_temperature = attributes[:temperature]
     @hourly_icon = attributes[:icon]
   end

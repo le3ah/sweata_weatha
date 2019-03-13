@@ -12,6 +12,6 @@ class DailyWeather
     @precip_type = attributes[:precipType]
     @temperature_high = attributes[:temperatureHigh]
     @temperature_low = attributes[:temperatureLow]
-    @time = attributes[:time]
+    @time = Time.at(attributes[:time]).strftime("%A")
   end
 end
